@@ -147,3 +147,18 @@ def rnd_selection(pop, min_):
         A random index in [0, len(pop)[ range.
     """
     return random.randint(0, len(pop)-1)
+
+def double_tournament(pressure):
+
+    # TODO: Not working yet
+    """ Implements double tournament selection algorithm
+    Select the best individual by fitness and another one by lowest tree complexity (?)
+    """
+    def tournament(pop, min_):
+
+        # Computes tournament pool size with respect to the population
+        pool_size = math.ceil(len(pop) * pressure)
+        # Gets random indices of the individuals
+        indices = torch.randint(low=0, high=len(pop), size=(pool_size, ))
+        # Returns the best individual in the pool
+        return indices[torch.argmin(pop.fit[indices])] if min_ else indices[torch.argmax(pop.fit[indices])]

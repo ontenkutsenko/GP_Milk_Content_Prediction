@@ -198,10 +198,8 @@ def prm_gs_xo(initializer, device):
         """
         rt = [lf1] + initializer()
         # Performs GSC on trees and returns the result
-        #
-        # Write here the GSXO operation
-        #
-        return None
+        return [add2, mul2] + rt + p1 + [mul2, sub2, c1] + rt + p2, \
+               [add2, mul2] + rt + p2 + [mul2, sub2, c1] + rt + p1
 
     return gs_xo
 
@@ -250,10 +248,8 @@ def prm_gs_mtn(initializer, ms):
             output is bounded in [-ms, ms].
         """
         ms_ = ms if len(ms) == 1 else ms[random.randint(0, len(ms) - 1)]
-        #
-        # Write here the GSM operation
-        #
-        return None
+
+        return [add2] + repr_ + [mul2, ms_, tanh1] + initializer()
 
     return gs_mtn
 
@@ -318,11 +314,10 @@ def prm_efficient_gs_xo(X, initializer):
         """
         # Creates a random tree (bounded in [0, 1])
         rt = [lf1] + initializer()
+        # Executes the tree to obtain random tree's semantics on X
+        rt_s = _execute_tree(rt, X)
         # Performs GSC on semantics and returns parent's semantics and the random tree
-        #
-        # Write here the Efficient GSXO operation
-        #
-        return None
+        return rt_s * p1 + (c1 - rt_s) * p2, rt_s * p2 + (c1 - rt_s) * p1, rt
 
     return efficient_gs_xo
 
@@ -384,10 +379,34 @@ def prm_efficient_gs_mtn(X, initializer, ms):
         # Creates a random tree bounded in [-1, 1]
         rt = [tanh1] + initializer()
         # Performs GSM and returns the semantics, the random tree and the mutation's step
-        #
-        # Write here the Efficient Mutation operation
-        #
-        return None
+        return repr_ + ms_ * _execute_tree(rt, X), rt, ms_
 
     return efficient_gs_mtn
 
+def hoist_mtn(repr_):
+    """ Implements the hoist mutation
+
+    The hoist mutation selects a random subtree R from solution's
+    representation and replaces it with a random subtree R' taken
+    from itself, i.e., a random subtree R' is selected from R and
+    replaces it in the representation (it is 'hoisted').
+
+    Parameters
+    ----------
+    repr_ : list
+        Parent's representation.
+
+    Returns
+    -------
+    list
+        The offspring obtained from replacing a randomly selected
+        subtree in the parent by a random tree.
+    """
+    # Get a subtree (R)
+    start, end = get_subtree(repr_)
+    subtree = repr_[start:end]
+    # Get a subtree of the subtree to hoist (R')
+    sub_start, sub_end = get_subtree(subtree)
+    hoist = subtree[sub_start:sub_end]
+    # Returns the result as lists' concatenation
+    return repr_[:start] + hoist + repr_[end:]
