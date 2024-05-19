@@ -150,9 +150,17 @@ def rnd_selection(pop, min_):
 
 def double_tournament(pressure):
 
-    # TODO: Not working yet
     """ Implements double tournament selection algorithm
-    Select the best individual by fitness and another one by lowest tree complexity (?)
+    Select the best individual by fitness in the first tournament. 
+    Second tournament is formed from first tournament winners. Tree with less complexity will be chosen
+    Parameters  
+    ----------
+    pressure : float
+    Selection pressure.
+    Returns
+    -------
+    int
+    The index of the most-fit solution after double tournament selection.
     """
     def tournament(pop, min_):
 
@@ -162,3 +170,16 @@ def double_tournament(pressure):
         indices = torch.randint(low=0, high=len(pop), size=(pool_size, ))
         # Returns the best individual in the pool
         return indices[torch.argmin(pop.fit[indices])] if min_ else indices[torch.argmax(pop.fit[indices])]
+    
+    def second_tournament(pop, min_):
+
+        # Creates tournament participants as best of multiple first tournaments
+        new_indicies = []
+        for i in range(math.ceil(len(pop) * pressure)):
+            new_indicies.append(tournament(pop, min_))
+
+        # Returns the least complex individual from the pool
+        return new_indicies[torch.argmin(pop.complexity[torch.tensor(new_indicies)])]
+
+
+    return second_tournament
