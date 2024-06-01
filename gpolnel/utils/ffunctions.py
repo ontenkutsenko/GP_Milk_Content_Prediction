@@ -146,6 +146,9 @@ class Ffunctions():
             return self.mae_dl(**kwargs)
         if kwargs['call'] == 'join':
             return self.mae_join(**kwargs)
+        if kwargs['call'] == 'semantic':
+            return torch.mean(torch.abs(torch.sub(kwargs['y_true'], kwargs['y_pred'])), len(kwargs['y_pred'].shape)-1)
+        
     def mae_dl(self, **kwargs):
         # Returns the sum of squared errors
         return torch.sum(torch.abs(torch.sub(kwargs['y_true'], kwargs['y_pred'])))
@@ -158,6 +161,8 @@ class Ffunctions():
             return self.mse_dl(**kwargs)
         if kwargs['call'] == 'join':
             return self.mse_join(**kwargs)
+        if kwargs['call'] == 'semantic':
+            return torch.mean(torch.pow(torch.sub(kwargs['y_true'], kwargs['y_pred']), 2), len(kwargs['y_pred'].shape)-1)
 
     def mse_dl(self, **kwargs):
         # Returns the sum of squared errors
@@ -189,8 +194,10 @@ class Ffunctions():
             return self.mape_dl(**kwargs)
         if kwargs['call'] == 'join':
             return self.mape_join(**kwargs)
+        if kwargs['call'] == 'semantic':
+            return torch.mean(torch.abs(torch.div(torch.sub(kwargs['y_true'], kwargs['y_pred']), kwargs['y_true'])), len(kwargs['y_pred'].shape)-1)
+        
     def mape_dl(self, **kwargs):
-        # Returns the sum of squared errors
         return torch.sum(torch.abs(torch.div(torch.sub(kwargs['y_true'], kwargs['y_pred']), kwargs['y_true'])))
     def mape_join(self, **kwargs):
         return kwargs['fit_dl'] / kwargs['n']
