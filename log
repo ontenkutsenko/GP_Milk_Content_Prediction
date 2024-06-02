@@ -1,26 +1,105 @@
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,0,0,3,tensor(0.3172, device='mps:0'),tensor(0.3562, device='mps:0'),1.5255340337753296,3.8727779388427734
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,1,0.3411383628845215,19,tensor(0.2261, device='mps:0'),tensor(0.2530, device='mps:0'),0.449775367975235,0.4435795545578003
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,2,0.5507240295410156,57,tensor(0.2068, device='mps:0'),tensor(0.2187, device='mps:0'),0.3412565588951111,0.47929003834724426
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,3,1.0957798957824707,133,tensor(0.1997, device='mps:0'),tensor(0.2111, device='mps:0'),0.2836872339248657,0.3480313718318939
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,4,2.064410924911499,265,tensor(0.1973, device='mps:0'),tensor(0.2056, device='mps:0'),0.5891320109367371,0.8870567083358765
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,5,4.291910886764526,567,tensor(0.1967, device='mps:0'),tensor(0.2087, device='mps:0'),0.43463918566703796,0.7941122055053711
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,6,9.449495792388916,1163,tensor(0.1960, device='mps:0'),tensor(0.2120, device='mps:0'),0.215598464012146,0.1785302758216858
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,0,0,5,tensor(0.3310, device='mps:0'),tensor(0.3180, device='mps:0'),1.8567640781402588,4.411543846130371
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,1,0.14690279960632324,23,tensor(0.3074, device='mps:0'),tensor(0.2948, device='mps:0'),0.46803632378578186,0.3240829408168793
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,2,0.3216218948364258,71,tensor(0.2483, device='mps:0'),tensor(0.2472, device='mps:0'),0.3774208128452301,0.4233819842338562
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,3,0.7972958087921143,153,tensor(0.2311, device='mps:0'),tensor(0.2471, device='mps:0'),0.2762787938117981,0.10868657380342484
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,4,1.2091829776763916,315,tensor(0.2300, device='mps:0'),tensor(0.2451, device='mps:0'),0.31152117252349854,0.2427036017179489
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,5,2.4640350341796875,671,tensor(0.2277, device='mps:0'),tensor(0.2421, device='mps:0'),0.3364503085613251,0.36394965648651123
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,6,4.8433661460876465,671,tensor(0.2277, device='mps:0'),tensor(0.2421, device='mps:0'),0.29827064275741577,0.3171074688434601
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,0,0,3,tensor(0.2726, device='mps:0'),tensor(0.2599, device='mps:0'),1.8722809553146362,7.328690528869629
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,1,1.4678499698638916,25,tensor(0.1991, device='mps:0'),tensor(0.2010, device='mps:0'),0.40166401863098145,0.4542273283004761
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,2,2.691970109939575,59,tensor(0.1878, device='mps:0'),tensor(0.2004, device='mps:0'),0.28643861413002014,0.38756459951400757
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,3,5.182673215866089,147,tensor(0.1837, device='mps:0'),tensor(0.2030, device='mps:0'),0.26949360966682434,0.3387584388256073
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,4,9.797969102859497,289,tensor(0.1804, device='mps:0'),tensor(0.2031, device='mps:0'),0.2670232057571411,0.36883458495140076
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,5,20.66855216026306,667,tensor(0.1792, device='mps:0'),tensor(0.2027, device='mps:0'),0.32097160816192627,0.5311357975006104
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,0,0,5,tensor(0.1926, device='mps:0'),tensor(0.2013, device='mps:0'),2.2889864444732666,11.485869407653809
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,1,3.1160199642181396,31,tensor(0.1828, device='mps:0'),tensor(0.2045, device='mps:0'),0.36995577812194824,0.45082592964172363
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,2,6.656358003616333,73,tensor(0.1790, device='mps:0'),tensor(0.2038, device='mps:0'),0.3038698136806488,0.46997278928756714
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,3,13.778058052062988,157,tensor(0.1749, device='mps:0'),tensor(0.1983, device='mps:0'),0.29394879937171936,0.48277196288108826
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,4,23.823267936706543,327,tensor(0.1743, device='mps:0'),tensor(0.1957, device='mps:0'),0.28752291202545166,0.4788990616798401
-INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,5,47.62098813056946,512,tensor(0.1733, device='mps:0'),tensor(0.1960, device='mps:0'),0.2843383848667145,0.4529416263103485
+INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,0,0,15,tensor(2.4603, device='mps:0'),tensor(11.8912, device='mps:0'),8.397680282592773,30.457534790039062
+INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,1,1.4871339797973633,14,tensor(1.0255, device='mps:0'),tensor(1.4550, device='mps:0'),3.7496705055236816,0.5092112421989441
+INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,2,2.7695839405059814,21,tensor(0.9379, device='mps:0'),tensor(1.2109, device='mps:0'),3.0464091300964355,0.47970739006996155
+INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,3,5.57904577255249,28,tensor(0.9278, device='mps:0'),tensor(1.1747, device='mps:0'),2.276660919189453,0.4474889636039734
+INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,4,9.504826068878174,179,tensor(0.7122, device='mps:0'),tensor(0.6510, device='mps:0'),1.561295747756958,0.35821732878685
+INFO:IP-SML,GeneticAlgorithm,1:GPOL,1,5,15.370145082473755,301,tensor(0.6465, device='mps:0'),tensor(0.7689, device='mps:0'),1.133362889289856,0.3800717890262604
+WARNING:Comm:No such comm: 7c6e7e820dbd4ce99f67f68928f3e2e6
+WARNING:Comm:No such comm: 634a5bc9766f43c488b71b18f22a4e70
+WARNING:Comm:No such comm: 285f326c39ef49328c33eaf311438f1e
+WARNING:Comm:No such comm: e78e09a292eb432990ea65f3b3a7fae2
+WARNING:Comm:No such comm: f5dc4e8ee454466aa74e142ae7d2adf2
+WARNING:Comm:No such comm: 24b9ce4c1d304d79adf05f1acf56b11c
+WARNING:Comm:No such comm: 9c2ed4a9d14847bc92528282ee2542c5
+WARNING:Comm:No such comm: d0a9731f1bef41a08400048efae8075d
+WARNING:Comm:No such comm: c5ef95c8383b47a19e75fbed0ef25bb4
+WARNING:Comm:No such comm: cea96665fd954ba3b5cfe2bb0e3fffb7
+WARNING:Comm:No such comm: 159e0dce8d8e4bcaac5406bc4f23faed
+WARNING:Comm:No such comm: 6f85ebef4cd04260972bf44e97776042
+WARNING:Comm:No such comm: 1b34dcdbe02e4cb994c362a86547c4cb
+WARNING:Comm:No such comm: 93bf3e2df9bd4f4789bfd129fd0da83d
+WARNING:Comm:No such comm: f5370dea212d40d682793b5dfea4e835
+WARNING:Comm:No such comm: e27a084e0e294f319a861b8957a4fd74
+WARNING:Comm:No such comm: 713ee07192764bf0a864b4900ad9ca09
+WARNING:Comm:No such comm: c467d3b9e79b41179116444bf4b12e0a
+WARNING:Comm:No such comm: 559ae1765dab4238b758a991eea12afb
+WARNING:Comm:No such comm: ddad1561315b4a26874d50220997b545
+WARNING:Comm:No such comm: c2ddfbce83e74c179857e826fe8689c4
+WARNING:Comm:No such comm: 5671df77ed364f738a277e9810fb5f39
+WARNING:Comm:No such comm: c8c266b8255743ab8963c9af8e7151e1
+WARNING:Comm:No such comm: c2a982e29a294965a18a641768488ef0
+WARNING:Comm:No such comm: ab69966b3a0741a0a5969e9b1996d059
+WARNING:Comm:No such comm: d5f6d59db22b4d9d85213ff208c43ff9
+WARNING:Comm:No such comm: acae1dae18a947f7b80c5b752ca30fcb
+WARNING:Comm:No such comm: d78d341dfd5640e2b0e4fd4e5b3c4046
+WARNING:Comm:No such comm: f7a2a411828d4ca8905464deb4e924d3
+WARNING:Comm:No such comm: e8d911a0364b4a27abcada9698d496fc
+WARNING:Comm:No such comm: f718640642924202a77fc9ac9dd70a72
+WARNING:Comm:No such comm: b9d175d99e9045d0826ebb372585d608
+WARNING:Comm:No such comm: ebde765f67c7476483328c1b3a5d23d2
+WARNING:Comm:No such comm: 9d8329a8c2b94f90841ddf6409ad2e87
+WARNING:Comm:No such comm: abdf1830428f49cda53624d51ccdd11a
+WARNING:Comm:No such comm: f56ba8fccc00403b9d53fec607dd9d86
+WARNING:Comm:No such comm: a3094ce970494d4cbc4a47252b06ec12
+WARNING:Comm:No such comm: 09c48a7039b04277ac4079bcd0bb7432
+WARNING:Comm:No such comm: 6dcd072b24774bef84e026343b616346
+WARNING:Comm:No such comm: 831df667eaf74428ae3acbe363461b61
+WARNING:Comm:No such comm: 47af8341d33a4fcda3db319fc4ecf377
+WARNING:Comm:No such comm: c4ed882f4e8b453ebf52f8fbc5b0693a
+WARNING:Comm:No such comm: c144be395eee4826874edcbd9708a1d5
+WARNING:Comm:No such comm: e5af9f1e900b4132ba2edafeb86b9ffb
+WARNING:Comm:No such comm: 0766f23dd2754e779828b911bdc1d254
+WARNING:Comm:No such comm: 8661c359e66948a3ae67485cc143bbc8
+WARNING:Comm:No such comm: 4381b22a79c74094a3598d913a8f850c
+WARNING:Comm:No such comm: 01e8cb85c5d64c6d815d791b943987f2
+WARNING:Comm:No such comm: cd383849104645c4a06a626a5eb10f05
+WARNING:Comm:No such comm: 1d8a9885b68747998234a9ff141691a9
+WARNING:Comm:No such comm: cacc118cf315441d99dda4883e9c7280
+WARNING:Comm:No such comm: c28658ebd6224e92b07ba2311317645b
+WARNING:Comm:No such comm: 4c5b70f728824c6e82296a024291a364
+WARNING:Comm:No such comm: 2a2e2b34ccba4d939eed731c00356651
+WARNING:Comm:No such comm: 0df30cb4224747bdafde8e088a5673b2
+WARNING:Comm:No such comm: 4d14428690f54b24a0cf8c29b12ef858
+WARNING:Comm:No such comm: 77bdd6a59fd1423f9e782ef252d0dc03
+WARNING:Comm:No such comm: abfe318da6384a79b57be7e065d76f68
+WARNING:Comm:No such comm: 7ac0c026e8ce4fbaadcdae7b92e42264
+WARNING:Comm:No such comm: 82521607e7bc4681a2c181404ddd2285
+WARNING:Comm:No such comm: 2e96bd7d099248789810f054fa7ce7f9
+WARNING:Comm:No such comm: 2b26d69a47c1487791e7c78042d17df3
+WARNING:Comm:No such comm: 3d820bdd0ec64349978a00b0a61c479a
+WARNING:Comm:No such comm: 65df13d3e8d944bc80dce512acb15c26
+WARNING:Comm:No such comm: a9d3209818854f24868b13c1506c17fb
+WARNING:Comm:No such comm: 505956e6d5d2400b8356765a521aec71
+WARNING:Comm:No such comm: 9f5e066dd97e47ffbd606e76b36d8cec
+WARNING:Comm:No such comm: 07989962044848d191163af2d2363688
+WARNING:Comm:No such comm: 282f8826b6064ed1865bec46e7b2e332
+WARNING:Comm:No such comm: 51ac1283cdb54f2c9bc4ca4ad2a4445b
+WARNING:Comm:No such comm: 2fdcb30606874d2a8fbdf72c09e0d70e
+WARNING:Comm:No such comm: 00fc678847b044bdbe08cfe2d4c1af83
+WARNING:Comm:No such comm: 7254dbb7e6314b8180c712b998312918
+WARNING:Comm:No such comm: 8aded6991fa64adebcbbb5e2dd043230
+WARNING:Comm:No such comm: e4a18c4fe6924e7b807e10ceebd71a1a
+WARNING:Comm:No such comm: a1b6a73fe9f34bf4ab6b5d1c67ba1a7f
+WARNING:Comm:No such comm: 1b4a7d3b463b4a9e9357ef09b24a4309
+WARNING:Comm:No such comm: 6c046b9daebc4e3d9e096279fc24d210
+WARNING:Comm:No such comm: 91299295b92343588309a44767fb6741
+WARNING:Comm:No such comm: e1dacd8b6a2447cb83eba1e3be9b3ec4
+WARNING:Comm:No such comm: 36b2c0a1b5e947dda0df16e4ef3b3ccb
+WARNING:Comm:No such comm: 7d205644b3b64e1da34d96384bbefe6c
+WARNING:Comm:No such comm: bd715d6a514e463d91ac2acce90135ff
+WARNING:Comm:No such comm: b643ff771cb340479eaffb72946f31f1
+WARNING:Comm:No such comm: dfa941809f97472aa1d09bc312157e0e
+WARNING:Comm:No such comm: 66b24a3815ce4646a8ba78d14f117486
+WARNING:Comm:No such comm: ad51b77243d84e548b1e1d6ecf78d431
+WARNING:Comm:No such comm: a25eef81144f43259b1f3983aead5f4d
+WARNING:Comm:No such comm: b56c1d8207ce4895bec431a98037a083
+WARNING:Comm:No such comm: 896d095d9a9945bfbf4ccc08b43b7c1a
+WARNING:Comm:No such comm: 63a39ff9c80f4923870b6ce0c72e41e8
+WARNING:Comm:No such comm: d1afbd8b76ae4ea0be19377c92569a86
+WARNING:Comm:No such comm: 355cbe8231cc44c7b85c95ec7d34913b
+WARNING:Comm:No such comm: 58f9274bc5494ac18929ada41046f95a
+WARNING:Comm:No such comm: b9c0c78ca4dc466eb0cf6bdda717746d
+WARNING:Comm:No such comm: dd8850704acc4b9fba4365bd9e0f663b
+WARNING:Comm:No such comm: 323821babb204506994f9c65047ed53e
+WARNING:Comm:No such comm: fc4c968fbc06444485685088ad16f068
+WARNING:Comm:No such comm: 83b2b3c40b524d2aad7e491083f75f77

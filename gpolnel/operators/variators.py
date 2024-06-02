@@ -9,6 +9,7 @@ implemented in this library.
 
 import copy
 import random
+
 import torch
 import numpy as np
 
@@ -41,6 +42,35 @@ def swap_xo(p1, p2):
     p2_start, p2_end = get_subtree(p2)
 
     return p1[:p1_start] + p2[p2_start:p2_end] + p1[p1_end:], p2[:p2_start] + p1[p1_start:p1_end] + p2[p2_end:]
+
+
+def hoist_mtn(repr_):
+    """ Implements the hoist mutation
+
+    The hoist mutation selects a random subtree R from solution's
+    representation and replaces it with a random subtree R' taken
+    from itself, i.e., a random subtree R' is selected from R and
+    replaces it in the representation (it is 'hoisted').
+
+    Parameters
+    ----------
+    repr_ : list
+        Parent's representation.
+
+    Returns
+    -------
+    list
+        The offspring obtained from replacing a randomly selected
+        subtree in the parent by a random tree.
+    """
+    # Get a subtree (R)
+    start, end = get_subtree(repr_)
+    subtree = repr_[start:end]
+    # Get a subtree of the subtree to hoist (R')
+    sub_start, sub_end = get_subtree(subtree)
+    hoist = subtree[sub_start:sub_end]
+    # Returns the result as lists' concatenation
+    return repr_[:start] + hoist + repr_[end:]
 
 
 def prm_point_mtn(sspace, prob):
@@ -175,7 +205,6 @@ def prm_gs_xo(initializer, device):
         on the parents' representation.
     """
     c1 = torch.Tensor([1.0]).to(device)
-
     def gs_xo(p1, p2):
         """ Implements the geometric semantic crossover
 
@@ -248,7 +277,6 @@ def prm_gs_mtn(initializer, ms):
             output is bounded in [-ms, ms].
         """
         ms_ = ms if len(ms) == 1 else ms[random.randint(0, len(ms) - 1)]
-
         return [add2] + repr_ + [mul2, ms_, tanh1] + initializer()
 
     return gs_mtn
@@ -383,30 +411,74 @@ def prm_efficient_gs_mtn(X, initializer, ms):
 
     return efficient_gs_mtn
 
-def hoist_mtn(repr_):
-    """ Implements the hoist mutation
 
-    The hoist mutation selects a random subtree R from solution's
-    representation and replaces it with a random subtree R' taken
-    from itself, i.e., a random subtree R' is selected from R and
-    replaces it in the representation (it is 'hoisted').
+# +++++++++++++++++++++++++++ Neuroevolution
+def nn_xo(p1, p2):
 
-    Parameters
-    ----------
-    repr_ : list
-        Parent's representation.
+    weights1, biases1 = p1
+    weights2, biases2 = p2
+    
+    new_weights1, new_weights2 = [], []
+    new_biases1, new_biases2 = [], []
 
-    Returns
-    -------
-    list
-        The offspring obtained from replacing a randomly selected
-        subtree in the parent by a random tree.
-    """
-    # Get a subtree (R)
-    start, end = get_subtree(repr_)
-    subtree = repr_[start:end]
-    # Get a subtree of the subtree to hoist (R')
-    sub_start, sub_end = get_subtree(subtree)
-    hoist = subtree[sub_start:sub_end]
-    # Returns the result as lists' concatenation
-    return repr_[:start] + hoist + repr_[end:]
+    # Crossover for weights abd biases
+    for i in range(len(weights1)):
+
+        crossover_point = random.randint(0, weights1[i].numel())
+        w1_flat = weights1[i].flatten()
+        w2_flat = weights2[i].flatten()
+        new_w1 = w1_flat.clone()
+        new_w2 = w2_flat.clone()
+
+        new_w1[:crossover_point] = w2_flat[:crossover_point]
+        new_w2[:crossover_point] = w1_flat[:crossover_point]
+
+        new_weights1.append(new_w1.reshape(weights1[i].shape))
+        new_weights2.append(new_w2.reshape(weights1[i].shape))
+
+        # Same for biases
+        crossover_point = random.randint(0, biases1[i].numel())
+        b1_flat = biases1[i].flatten()
+        b2_flat = biases2[i].flatten()
+        new_b1 = b1_flat.clone()
+        new_b2 = b2_flat.clone()
+
+        new_b1[:crossover_point] = b2_flat[:crossover_point]
+        new_b2[:crossover_point] = b1_flat[:crossover_point]
+
+        new_biases1.append(new_b1.reshape(biases1[i].shape))
+        new_biases2.append(new_b2.reshape(biases1[i].shape))
+
+    # Concatenate the new weights and biases
+    p1 = [new_weights1, new_biases1]
+    p2 = [new_weights2, new_biases2]
+    
+    return p1, p2
+
+
+def prm_nn_mtn(ms, sspace):
+    
+    def nn_mtn(repr_):
+        weights, biases = repr_
+        mutated_weights = []
+        mutated_biases = []
+        
+        # Mutate weights
+        for layer in weights:
+            # To put into interval -1 1
+            mutation = ms * (2 * torch.rand(layer.shape, device=sspace['device']) - 1)
+            new_layer = layer + mutation
+            mutated_weights.append(new_layer)
+        
+        # Mutate biases
+        for bias in biases:
+            mutation = ms * (2 * torch.rand(bias.shape, device=sspace['device']) - 1)
+            new_bias = bias + mutation
+
+            mutated_biases.append(new_bias)
+        
+        return [mutated_weights, mutated_biases]
+    
+    return nn_mtn
+
+

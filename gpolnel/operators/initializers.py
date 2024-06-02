@@ -129,11 +129,6 @@ class Constant:
     def __str__(self):
         return 'Constant set: values {}'.format(self.values)
 
-
-def grow(sspace, n_sols):
-    return [grow_individual(sspace) for _ in range(n_sols)]
-
-
 def grow_individual(sspace):
     """ Implements Grow initialization algorithm for GP
 
@@ -190,6 +185,9 @@ def grow_individual(sspace):
                     return program
                 terminal_stack[-1] -= 1
     return None
+
+def grow(sspace, n_sols):
+    return [grow_individual(sspace) for _ in range(n_sols)]
 
 
 def prm_grow(sspace):
@@ -265,7 +263,7 @@ def prm_grow(sspace):
     return grow_
 
 
-def full(sspace):
+def full_individual(sspace):
     """ Implements Full initialization algorithm
 
     The probability of selecting a constant from the set of terminals
@@ -284,23 +282,23 @@ def full(sspace):
         program (candidate solution). The program follows LISP-based
         formulation and Polish pre-fix notation.
     """
-    function_ = random.choice(sspace['function_set'])
+    function_ = random.choice(sspace["function_set"])
     program = [function_]
     terminal_stack = [function_.arity]
 
     while terminal_stack:
         depth = len(terminal_stack)
 
-        if depth < sspace['max_init_depth']:
-            function_ = random.choice(sspace['function_set'])
+        if depth < sspace["max_init_depth"]:
+            function_ = random.choice(sspace["function_set"])
             program.append(function_)
             terminal_stack.append(function_.arity)
         else:
             terminal = Terminal(
-                constant_set=sspace['constant_set'],
-                p_constants=sspace['p_constants'],
-                n_dims=sspace['n_dims'],
-                device=sspace['device']
+                constant_set=sspace["constant_set"],
+                p_constants=sspace["p_constants"],
+                n_dims=sspace["n_dims"],
+                device=sspace["device"]
             ).initialize()
             program.append(terminal)
             terminal_stack[-1] -= 1
@@ -310,6 +308,9 @@ def full(sspace):
                     return program
                 terminal_stack[-1] -= 1
     return None
+
+def full(sspace, n_sols):
+    return [full_individual(sspace) for _ in range(n_sols)]
 
 
 def prm_full(sspace):
@@ -352,23 +353,23 @@ def prm_full(sspace):
             program (candidate solution). The program follows LISP-based
             formulation and Polish pre-fix notation.
         """
-        function_ = random.choice(sspace['function_set'])
+        function_ = random.choice(sspace["function_set"])
         program = [function_]
         terminal_stack = [function_.arity]
 
         while terminal_stack:
             depth = len(terminal_stack)
 
-            if depth < sspace['max_init_depth']:
-                function_ = random.choice(sspace['function_set'])
+            if depth < sspace["max_init_depth"]:
+                function_ = random.choice(sspace["function_set"])
                 program.append(function_)
                 terminal_stack.append(function_.arity)
             else:
                 terminal = Terminal(
-                    constant_set=sspace['constant_set'],
-                    p_constants=sspace['p_constants'],
-                    n_dims=sspace['n_dims'],
-                    device=sspace['device']
+                    constant_set=sspace["constant_set"],
+                    p_constants=sspace["p_constants"],
+                    n_dims=sspace["n_dims"],
+                    device=sspace["device"]
                 ).initialize()
                 program.append(terminal)
                 terminal_stack[-1] -= 1
@@ -411,9 +412,23 @@ def rhh(sspace, n_sols):
         for i in range(group_size):
             sspace_group = sspace
             sspace_group["max_init_depth"] = max_depth_group
-            pop.append(full(sspace_group))
-            pop.append(grow(sspace_group))
+            pop.append(full_individual(sspace_group))
+            pop.append(grow_individual(sspace_group))
     while len(pop) < n_sols:
-        pop.append(grow(sspace_group) if random.randint(0, 1) else full(sspace_group))
+        pop.append(grow_individual(sspace_group) if random.randint(0, 1) else full_individual(sspace_group))
     return pop
+
+def nn_init_individual(sspace):
+    n_neurons = [sspace['input_shape']] + sspace['n_hidden_neurons'] + [sspace['n_output']]
+    # Weights
+    sol = []
+    for i_nn in range(len(n_neurons) - 1):
+        sol += [torch.randn(n_neurons[i_nn], n_neurons[i_nn + 1], device=sspace['device'])*sspace['init_factor']]
+    # Biases
+    sol = [sol, [torch.randn(n, device=sspace['device']) for n in n_neurons[1:]]]
+    return sol
+
+
+def nn_init(sspace, n_sols):
+    return [nn_init_individual(sspace) for _ in range(n_sols)]
 

@@ -102,14 +102,3 @@ def phi(l=None, no=None, nao=None, naoc=None, sol=None):
     if sol is None:
         return 79.1 - .2 * l - 0.5 * no - 3.4 * nao - 4.5 * naoc
     return 79.1 - .2 * sol.get_size() - 0.5 * sol.get_no() - 3.4 * sol.get_nao() - 4.5 * sol.get_naoc()
-
-def rmse(y_true, y_pred):
-    return torch.sqrt(torch.mean(torch.pow(torch.sub(y_true, y_pred), 2), len(y_pred.shape)-1))
-
-
-def mse(y_true, y_pred):
-    return torch.mean(torch.pow(torch.sub(y_true, y_pred), 2), len(y_pred.shape)-1)
-
-
-def mae(y_true, y_pred):
-    return torch.mean(torch.abs(torch.sub(y_true, y_pred)), len(y_pred.shape)-1)
