@@ -345,6 +345,9 @@ def prm_efficient_gs_xo(X, initializer):
         # Executes the tree to obtain random tree's semantics on X
         rt_s = _execute_tree(rt, X)
         # Performs GSC on semantics and returns parent's semantics and the random tree
+        print(rt_s * p1)
+        print((c1 - rt_s))
+        print((c1 - rt_s) * p2)
         return rt_s * p1 + (c1 - rt_s) * p2, rt_s * p2 + (c1 - rt_s) * p1, rt
 
     return efficient_gs_xo
